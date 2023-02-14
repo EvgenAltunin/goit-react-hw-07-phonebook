@@ -10,11 +10,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
 import { toast } from 'react-toastify';
 import { notificationParams } from 'settings/settings';
+import { getContacts } from 'redux/selectors';
 
 export function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(getContacts);
 
   const dispatch = useDispatch();
 

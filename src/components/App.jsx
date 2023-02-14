@@ -13,7 +13,7 @@ import { Filter } from 'components/Filter/Filter';
 export default function App() {
   const dispatch = useDispatch();
   const { isLoading, error } = useSelector(state => state.contacts);
-  
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -24,10 +24,18 @@ export default function App() {
       <ContactForm />
       <h2 style={{ textAlign: 'center', fontWeight: '700' }}>Contacts</h2>
       <Filter />
-      {isLoading && !error && <Loader />}
-      {error && (
-        <p style={{ textAlign: 'center'}}>{error}</p>
-      )}
+      <div
+        style={{
+          height: '30px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        {isLoading && !error && <Loader />}
+        {error && <p style={{ textAlign: 'center' }}>{error}</p>}
+      </div>
+
       <ContactList />
       <ToastContainer
         theme="colored"

@@ -5,7 +5,7 @@ export const Lable = styled.label`
     display: block;
     text-align: center;
     justify-content: center;
-    margin-bottom: 8px;
+
 
     font-size: 18px;
     font-weight: 700;
