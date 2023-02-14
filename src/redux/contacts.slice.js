@@ -2,14 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import { contactsInitState } from 'redux/init-state';
 
 const contactsSlice = createSlice({
-  name: 'contacts',
-  initialState: contactsInitState,
+  name: 'items',
+  initialState: contactsInitState.contacts,
   reducers: {
-    addContactAction: (state, { payload }) => {
-      return [...state, payload];
+    addContactAction(state, { payload }) {
+      state.items.unshift(payload)
     },
     deleteContactAction: (state, { payload }) => {
-      return state.filter(contact => contact.id !== payload);
+      state.items = state.items.filter(contact => contact.id !== payload);
     },
   },
 });

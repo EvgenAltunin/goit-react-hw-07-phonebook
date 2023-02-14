@@ -10,13 +10,15 @@ import {
 } from 'components/ContactList/ContactList.styled';
 
 export const ContactList = () => {
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.items);
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
-
+console.log()
   const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
+
+
 
   return (
     <ContactsList>
