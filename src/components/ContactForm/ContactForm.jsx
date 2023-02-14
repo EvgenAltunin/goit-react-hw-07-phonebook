@@ -7,8 +7,7 @@ import {
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContactAction } from '../../redux/contacts.slice';
-import shortid from 'shortid';
+import { addContact } from 'redux/operations';
 import { toast } from 'react-toastify';
 import { notificationParams } from 'settings/settings';
 
@@ -41,7 +40,7 @@ export function ContactForm() {
     if (isContactNameInContactsList) {
       toast.warning(`${name} is already in contacts!`, { notificationParams });
     } else {
-      dispatch(addContactAction({ name, number, id: shortid.generate() }));
+      dispatch(addContact({ name, number }));
       toast.success(`${name} added to your contacts!`);
     }
     setName('');

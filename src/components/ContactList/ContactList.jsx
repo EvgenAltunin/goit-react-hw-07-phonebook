@@ -1,6 +1,6 @@
 import { BsFillPersonFill, BsTelephoneFill } from 'react-icons/bs';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContactAction } from '../../redux/contacts.slice';
+import { deleteContact } from 'redux/operations';
 
 import {
   ContactsList,
@@ -9,16 +9,16 @@ import {
   ContactButton,
 } from 'components/ContactList/ContactList.styled';
 
+
 export const ContactList = () => {
   const contacts = useSelector(state => state.contacts.items);
   const filter = useSelector(state => state.filter);
+  const isLoading = useSelector(state => state.contacts.isLoading);
   const dispatch = useDispatch();
-console.log()
+
   const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
-
-
 
   return (
     <ContactsList>
@@ -48,10 +48,10 @@ console.log()
           </ContactText>
           <ContactButton
             type="button"
-            aria-label="Add new contact"
-            onClick={() => dispatch(deleteContactAction(id))}
+            aria-label="Delete contact"
+            onClick={() => dispatch(deleteContact(id))}
           >
-            Delete
+            {isLoading ? 'Deleting...' : 'Delete'}
           </ContactButton>
         </ContactItem>
       ))}

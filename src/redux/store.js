@@ -11,6 +11,8 @@ import { filterReducer } from 'redux/filter.slice';
 //   filter: filterReducer,
 // });
 
+
+
 export const store = configureStore({
   preloadedState: contactsInitState,
   devTools: true,
